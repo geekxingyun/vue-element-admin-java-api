@@ -62,3 +62,12 @@ change vue-config.js file as below:
   },
 ```
 
+then run command as below:
+
+```
+npm run dev
+```
+
+open the website as below:
+
+[http://127.0.0.1:9527](http://127.0.0.1:9527)
