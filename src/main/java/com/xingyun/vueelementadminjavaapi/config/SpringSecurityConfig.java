@@ -79,7 +79,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 //健康检查
                 .antMatchers("/actuator/**").hasRole("operation-maintenance-access")
                 //测试数据库控制台
-               //.antMatchers("/h2-console/**").hasRole("operation-maintenance-access")
+               .antMatchers("/h2-console/**").hasRole("operation-maintenance-access")
                 // 除上面外的所有请求全部需要认证
                 .anyRequest().permitAll()
                 .and()

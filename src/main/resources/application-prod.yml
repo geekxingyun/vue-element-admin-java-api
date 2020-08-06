@@ -4,12 +4,12 @@ spring:
   datasource:
     username: root
     password: toor
-    url: jdbc:mysql://localhost:3306/vue_element_admin_test_db?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/vue_element_admin_prod_db?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
     initialization-mode: never
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
         implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
@@ -20,7 +20,7 @@ spring:
 
 server:
   servlet:
-    context-path: /dev-api
+    context-path: /prod-api
   port: 8080
 
 com:
