@@ -28,8 +28,22 @@ mvn package
 -  Running the Application
 
 ```
-java -jar vue-element-admin-java-api-0.0.1-SNAPSHOT.jar --server.port=8080
+java -jar vue-element-admin-java-api-0.0.1-SNAPSHOT.jar --server.port=8080 --server.servlet.context-path=/dev-api
 ```
+
+Tips:If you want to run it in the background
+
+Windows：
+
+```
+javaw -jar vue-element-admin-java-api-0.0.1-SNAPSHOT.jar --server.port=8080 --server.servlet.context-path=/dev-api
+```
+Linux or Mac OSX:
+
+```
+nohup java -jar vue-element-admin-java-api-0.0.1-SNAPSHOT.jar --server.port=8080 --server.servlet.context-path=/dev-api
+```
+
 - Visit the App
 
 http://127.0.0.1:8080/dev-api
@@ -46,6 +60,12 @@ git clone https://github.com/PanJiaChen/vue-element-admin.git
 
 ```
 cd vue-element-admin
+```
+
+- install proxy repository for china
+
+```
+npm install --registry=https://registry.npm.taobao.org
 ```
 
 - install dependency
