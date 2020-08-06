@@ -24,8 +24,8 @@ public class VueElementAdminUserEntity {
     @Id
     @GeneratedValue(generator = "SnowFlakeId")
     @GenericGenerator(name = "SnowFlakeId", strategy = "com.xingyun.vueelementadminjavaapi.customized.SnowFlakeIdGenerator")
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "pkUid")
+    private Long pkUid;
     /**
      * 用户名
      */

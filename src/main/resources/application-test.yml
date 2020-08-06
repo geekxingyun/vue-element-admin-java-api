@@ -2,37 +2,26 @@ spring:
   application:
     name: vue-element-admin-java-api
   datasource:
-    username: sa
-    password: sa
-    # base on file
-    #url: jdbc:h2:~/embedded_file_test_db
-    #base on memory
-    url: jdbc:h2:mem:vue_element_admin_db
+    username: root
+    password: toor
+    url: jdbc:mysql://localhost:3306/vue_element_admin_test_db?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
     initialization-mode: never
-    driver-class-name: org.h2.Driver
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
         implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
-    database: h2
+    database: mysql
     open-in-view: true
     show-sql: true
-management:
-  endpoint:
-    health:
-      show-details: when_authorized
-
 
 server:
   servlet:
-    context-path: /dev-api
+    context-path: /test-api
   port: 8080
+
 com:
   xingyun:
     vue:
@@ -42,3 +31,8 @@ com:
           adminUserPassword: 111111
           editorUserName: editor
           editorUserPassword: 111111
+
+management:
+  endpoint:
+    health:
+      show-details: when_authorized

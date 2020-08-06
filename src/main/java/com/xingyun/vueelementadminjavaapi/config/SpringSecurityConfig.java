@@ -53,8 +53,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 //跨域配置 支持非同源跨域
-                //.cors().configurationSource(corsConfigurationSource())
-                //.and()
+//                .cors().configurationSource(corsConfigurationSource())
+//                .and()
                 //config allow include frame page
                 .headers().frameOptions().sameOrigin()
                 .and()
@@ -78,8 +78,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/swagger-ui/index.html","/swagger-ui/**","/swagger-resources/**","/v3/**").hasRole("swagger-api-doc-access")
                 //健康检查
                 .antMatchers("/actuator/**").hasRole("operation-maintenance-access")
+                //测试数据库控制台
+               //.antMatchers("/h2-console/**").hasRole("operation-maintenance-access")
                 // 除上面外的所有请求全部需要认证
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .and()
                 //使用默认的表单登陆认证方式 支持表单登陆 openid oauth2.0 saml2等多种认证方式
                 .formLogin()
@@ -159,7 +161,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         UserDetails javaUserDetailsDev =
                 User.builder()
                         //账号
-                        .username("swagger_admin")
+                        .username("admin")
                         //密码  String password=new BCryptPasswordEncoder().encode("666666");
                         .password("$2a$10$5SGk2.B2qUhgqN2pthhb7On.vTM.eJowlhhTLaDyPO2RwIvCePD6e")
                         //角色
