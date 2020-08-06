@@ -1,6 +1,8 @@
 # vue-element-admin-java-api
 vue element admin java api is for [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin) 
 
+spring boot + Spring Security + Token + Swagger Document
+
 ## 1.1 Getting Started
 
 ### 1.1.1 How to use vue-element-admin-java-api?
