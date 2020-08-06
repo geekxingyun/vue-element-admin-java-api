@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: vue-element-admin-java-api
+
+
+server:
+  servlet:
+    context-path: /dev-api
+  port: 8080
+
+com:
+  xingyun:
+    vue:
+      element:
+        admin:
+          adminUserName: admin
+          adminUserPassword: 111111
+          editorUserName: editor
+          editorUserPassword: 111111

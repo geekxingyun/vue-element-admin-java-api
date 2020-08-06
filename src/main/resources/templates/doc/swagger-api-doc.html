@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Swagger API Doc</title>
+    <style type="text/css">
+        html, body
+        {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div style="width:100%; height:100%" >
+
+    <div>
+        <div align="left" style="float:left">
+            <h2 style="margin-left: 100px;margin-top: 10px;">
+                <a th:align="left"
+                   th:href="@{/}" style="text-decoration:none">返回首页</a>
+            </h2>
+        </div>
+        <div align="right">
+            <h2 style="margin-right: 100px;margin-top: 10px;">
+                <a th:href="@{/logout}" style="text-decoration:none">注销登陆</a>
+            </h2>
+        </div>
+    </div>
+    <!--
+    frameborder:规定是否显示框架周围的边框。
+    height:规定 iframe 的高度。pixels|%
+    marginheight:pixels 定义 iframe 的顶部和底部的边距
+    marginwidth:pixels	定义 iframe 的左侧和右侧的边距。
+    scrolling: 规定是否在 iframe 中显示滚动条。 yes|no|auto
+    seamless:规定 <iframe> 看上去像是包含文档的一部分。
+    规定在 iframe 中显示的文档的 UR
+    定义 iframe 的宽度。
+    -->.
+    <iframe
+            name="swagger-ui-iframe-page"
+            th:src="@{/swagger-ui/index.html}"
+            marginheight="0"
+            marginwidth="0"
+            frameborder="0"
+            scrolling="auto"
+            width="100%"
+            height="100%"
+    >
+    </iframe>
+</div>
+</body>
+</html>
