@@ -3,25 +3,35 @@ vue element admin java api is for [vue-element-admin](https://github.com/PanJiaC
 
 ## 1.1 Getting Started
 
-## 1.2 Building the Application
+- clone the project
+
+```
+git clone https://github.com/geekxingyun/vue-element-admin-java-api.git
+```
+
+- enter the project directory
+
+```
+cd vue-element-admin-java-api
+```
+- install dependency
 
 ```
 mvn package
 ```
 
-## 1.3 Running the Application
+-  Running the Application
 
 ```
 java -jar vue-element-admin-java-api-0.0.1-SNAPSHOT.jar --server.port=8080
 ```
-## 1.4 Visit the App
+- Visit the App
 
 http://127.0.0.1:8080/dev-api
 
+## 1.2 QA
 
-## 1.5 QA
-
-### 1.5.1 How to use with vue-element-admin?
+### 1.2.1 How to use with vue-element-admin?
 
 - clone the project
 
@@ -82,7 +92,7 @@ open the website as below:
 
 [http://127.0.0.1:9527](http://127.0.0.1:9527)
 
-### 1.5.2 How to Login Swagger API?
+### 1.2.2 How to Login Swagger API?
 
 Spring Security Login
 ```
@@ -97,7 +107,7 @@ if you want to change the default password,you can run the code as below:
 ```
 String password=new BCryptPasswordEncoder().encode("666666");
 ```
-### 1.5.3 How to change DB?
+### 1.2.3 How to change DB?
 
 default is use H2 Database base on Memory,if you want to change to MySQL Database
 
@@ -109,7 +119,7 @@ spring:
 ```
 Tips: it will active application-test.yml configuration
 
-### 1.5.4 save data forever
+### 1.2.4 save data forever
 
 default it will always destroy data and create again when you run the application.
 
