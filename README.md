@@ -21,22 +21,7 @@ http://127.0.0.1:8080/dev-api
 
 ## 1.5 QA
 
-### 1.5.1 How to Login Swagger API?
-
-Spring Security Login
-```
-username:admin
-password:666666
-```
-
-Tips:
-
-if you want to change the default password,you can run the code as below:
-
-```
-String password=new BCryptPasswordEncoder().encode("666666");
-```
-### 1.5.2 How to use with vue-element-admin?
+### 1.5.1 How to use with vue-element-admin?
 
 change vue-config.js file as below:
 ```
@@ -72,6 +57,21 @@ open the website as below:
 
 [http://127.0.0.1:9527](http://127.0.0.1:9527)
 
+### 1.5.2 How to Login Swagger API?
+
+Spring Security Login
+```
+username:admin
+password:666666
+```
+
+Tips:
+
+if you want to change the default password,you can run the code as below:
+
+```
+String password=new BCryptPasswordEncoder().encode("666666");
+```
 ### 1.5.3 How to change DB?
 
 default is use H2 Database base on Memory,if you want to change to MySQL Database
