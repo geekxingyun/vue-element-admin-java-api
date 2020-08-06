@@ -7,7 +7,7 @@ spring:
     # base on file
     #url: jdbc:h2:~/embedded_file_test_db
     #base on memory
-    url: jdbc:h2:mem:vue_element_admin_db
+    url: jdbc:h2:mem:vue_element_admin_db;DB_CLOSE_DELAY=-1
     initialization-mode: never
     driver-class-name: org.h2.Driver
   h2:

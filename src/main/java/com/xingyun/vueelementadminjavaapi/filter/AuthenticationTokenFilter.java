@@ -59,7 +59,10 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
         log.info("requestUri={}",requestUri);
         log.info("requestURL={}",requestUrl);
         log.info("token={}",token);
-        requestUri=requestUri.replace(serverProperties.getServlet().getContextPath(),"");
+        if(null!=serverProperties.getServlet().getContextPath()){
+            //去掉/dev-api/vue-element-admin/user/login 中的 /dev-api
+            requestUri=requestUri.replace(serverProperties.getServlet().getContextPath(),"");
+        }
         log.info("检查是否在白名单请求Uri={}",requestUri);
         //精确匹配
         if(this.whiteWebSiteList.contains(requestUri)){

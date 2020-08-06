@@ -6,6 +6,9 @@ spring:
     password: toor
     url: jdbc:mysql://localhost:3306/vue_element_admin_prod_db?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
     initialization-mode: never
+    # mysql 5.x
+    #driver-class-name: com.mysql.jdbc.Driver
+    # mysql 8 +
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -16,6 +19,8 @@ spring:
     database: mysql
     open-in-view: true
     show-sql: true
+    # mysql 8 +
+    # if have no set the value,it will use MyISAM Engine
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 
 server:
