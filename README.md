@@ -71,3 +71,38 @@ npm run dev
 open the website as below:
 
 [http://127.0.0.1:9527](http://127.0.0.1:9527)
+
+### 1.5.3 How to change DB?
+
+default is use H2 Database base on Memory,if you want to change to MySQL Database
+
+you just need to change the application.yml as below:
+```
+spring:
+  profiles:
+    active: test
+```
+Tips: it will active application-test.yml configuration
+
+### 1.5.4 save data forever
+
+default it will always destroy data and create again when you run the application.
+
+if you want to save the data forever,
+
+please switch to prod ,
+```
+spring:
+  profiles:
+    active: test
+```
+or 
+
+change the properties value as below:
+```
+spring:
+  jpa:
+      hibernate:
+        ddl-auto: update
+```
+
