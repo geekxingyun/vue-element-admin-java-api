@@ -19,6 +19,10 @@ java -jar vue-element-admin-java-api-0.0.1-SNAPSHOT.jar --server.port=8080
 http://127.0.0.1:8080/dev-api
 
 
+## 1.5 QA
+
+### 1.5.1 How to Login Swagger API?
+
 Spring Security Login
 ```
 username:admin
@@ -32,3 +36,29 @@ if you want to change the default password,you can run the code as below:
 ```
 String password=new BCryptPasswordEncoder().encode("666666");
 ```
+### 1.5.2 How to use with vue-element-admin?
+
+change vue-config.js file as below:
+```
+  devServer: {
+    port: port,
+    open: true,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
+    proxy: {
+      // change xxx-api/login => mock/login
+      // detail: https://cli.vuejs.org/config/#devserver-proxy
+      [process.env.VUE_APP_BASE_API]: {
+        target: `http://127.0.0.1:8080/dev-api`,
+        changeOrigin: true,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_BASE_API]: ''
+        }
+      }
+    }
+    //before: require('./mock/mock-server.js')
+  },
+```
+
