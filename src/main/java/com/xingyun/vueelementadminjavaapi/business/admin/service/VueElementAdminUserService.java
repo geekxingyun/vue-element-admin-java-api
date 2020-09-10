@@ -2,6 +2,7 @@ package com.xingyun.vueelementadminjavaapi.business.admin.service;
 
 import com.xingyun.vueelementadminjavaapi.business.admin.model.VueElementAdminUserEntity;
 import com.xingyun.vueelementadminjavaapi.business.admin.model.VueElementAdminUserLogin;
+import com.xingyun.vueelementadminjavaapi.business.admin.model.VueElementAdminUserWebVO;
 import com.xingyun.vueelementadminjavaapi.business.admin.model.VueWelcomeInfo;
 import com.xingyun.vueelementadminjavaapi.model.VueElementAdminResponse;
 
@@ -22,4 +23,6 @@ public interface VueElementAdminUserService {
     VueElementAdminUserEntity saveVueElementAdminUser(VueElementAdminUserEntity vueElementAdminUserEntity);
 
     Optional<VueElementAdminUserEntity> findVueElementAdminUserByToken(String token);
+
+    VueElementAdminUserWebVO convertToWebVO(VueElementAdminUserEntity vueElementAdminUserEntity);
 }

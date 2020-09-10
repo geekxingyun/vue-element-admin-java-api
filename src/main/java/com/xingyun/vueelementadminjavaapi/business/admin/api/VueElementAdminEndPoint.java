@@ -11,12 +11,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
-import org.springframework.http.HttpHeaders;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,23 +81,12 @@ public class VueElementAdminEndPoint {
     @ApiOperation(value = "获取用户信息接口")
     @ApiImplicitParam(name = "X-Token", value = "登陆用户Token",required = true, dataType = "String",paramType="header")
     @GetMapping(value = "/user/info")
-    public VueElementAdminResponse getVueElementAdminInfo(@RequestHeader HttpHeaders httpHeaders,@RequestParam(value = "token",required = false)String token) {
-        InetSocketAddress host = httpHeaders.getHost();
-        String url = "http://" + host.getHostName() + ":" + host.getPort();
-        log.info("head中url={}",url);
-        log.info("head中token:{}",httpHeaders.get("X-Token"));
-
-        token=httpHeaders.getFirst("X-Token");
-
-        log.info("根据token={},查询用户信息",token);
+    public VueElementAdminResponse getVueElementAdminInfo(@RequestHeader(value = "X-Token")String token) {
+        log.info("token={},查询用户信息",token);
         Optional<VueElementAdminUserEntity> vueElementAdminUserEntityOptional=this.vueElementAdminUserService.findVueElementAdminUserByToken(token);
         if(vueElementAdminUserEntityOptional.isPresent()){
-            log.info("查找用户信息成功:{}",vueElementAdminUserEntityOptional.get());
             VueElementAdminUserEntity vueElementAdminUserEntity=vueElementAdminUserEntityOptional.get();
-            VueElementAdminUserWebVO vueElementAdminUserWebVO=new VueElementAdminUserWebVO();
-            BeanUtils.copyProperties(vueElementAdminUserEntity,vueElementAdminUserWebVO);
-            String[] roles=vueElementAdminUserEntity.getRoles().split(",");
-            vueElementAdminUserWebVO.setRoles(roles);
+            VueElementAdminUserWebVO vueElementAdminUserWebVO=this.vueElementAdminUserService.convertToWebVO(vueElementAdminUserEntity);
             this.vueElementAdminResponse.setCode(20000);
             this.vueElementAdminResponse.setMessage("获取用户信息列表成功");
             this.vueElementAdminResponse.setData(vueElementAdminUserWebVO);
@@ -123,7 +109,6 @@ public class VueElementAdminEndPoint {
     }
 
     @ApiOperation(value = "欢迎页数据接口")
-    @ApiImplicitParam(name = "X-Token", value = "登陆用户Token",required = true, dataType = "String",paramType="header")
     @GetMapping(value = "/transaction/list")
     public VueElementAdminResponse welcomeVue(){
         Map<String,Object>  resultMap=new HashMap<>(2);

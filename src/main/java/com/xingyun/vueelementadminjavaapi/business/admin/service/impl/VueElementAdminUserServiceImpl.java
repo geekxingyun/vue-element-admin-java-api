@@ -3,10 +3,12 @@ package com.xingyun.vueelementadminjavaapi.business.admin.service.impl;
 import com.xingyun.vueelementadminjavaapi.business.admin.dao.jpa.VueElementAdminUserJpaRepository;
 import com.xingyun.vueelementadminjavaapi.business.admin.model.VueElementAdminUserEntity;
 import com.xingyun.vueelementadminjavaapi.business.admin.model.VueElementAdminUserLogin;
+import com.xingyun.vueelementadminjavaapi.business.admin.model.VueElementAdminUserWebVO;
 import com.xingyun.vueelementadminjavaapi.business.admin.model.VueWelcomeInfo;
 import com.xingyun.vueelementadminjavaapi.business.admin.service.VueElementAdminUserService;
 import com.xingyun.vueelementadminjavaapi.customized.MyAppProperties;
 import com.xingyun.vueelementadminjavaapi.model.VueElementAdminResponse;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -96,5 +98,16 @@ public class VueElementAdminUserServiceImpl implements VueElementAdminUserServic
     @Override
     public Optional<VueElementAdminUserEntity> findVueElementAdminUserByToken(String token) {
         return this.vueElementAdminUserJpaRepository.findByToken(token);
+    }
+
+    @Override
+    public VueElementAdminUserWebVO convertToWebVO(VueElementAdminUserEntity vueElementAdminUserEntity) {
+        VueElementAdminUserWebVO vueElementAdminUserWebVO=new VueElementAdminUserWebVO();
+        BeanUtils.copyProperties(vueElementAdminUserEntity,vueElementAdminUserWebVO);
+        if(null!=vueElementAdminUserEntity.getRoles()){
+            String[] roles=vueElementAdminUserEntity.getRoles().split(",");
+            vueElementAdminUserWebVO.setRoles(roles);
+        }
+        return vueElementAdminUserWebVO;
     }
 }

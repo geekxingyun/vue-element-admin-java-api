@@ -9,6 +9,10 @@ import java.util.Optional;
  * @author qing-feng.zhao
  */
 public interface VueElementAdminUserJpaRepository extends JpaRepository<VueElementAdminUserEntity,Long> {
-
+    /**
+     * 根据token 查询登陆用户信息
+     * @param token
+     * @return
+     */
     Optional<VueElementAdminUserEntity> findByToken(String token);
 }
