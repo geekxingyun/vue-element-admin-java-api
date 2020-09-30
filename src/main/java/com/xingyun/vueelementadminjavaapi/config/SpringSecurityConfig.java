@@ -53,8 +53,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 //跨域配置 支持非同源跨域
-//                .cors().configurationSource(corsConfigurationSource())
-//                .and()
+                .cors().configurationSource(corsConfigurationSource())
+                .and()
                 //config allow include frame page
                 .headers().frameOptions().sameOrigin()
                 .and()
@@ -63,17 +63,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 //NEVER:Spring Security will never create an HttpSession, but will use the HttpSession if it already exists
                 //IF_REQUIRED:Spring Security will only create an  HttpSession if required
                 //STATELESS:Spring Security will never create an HttpSession and it will never use it to obtain the SecurityContext
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                 .and()
                 .authorizeRequests()
                 //首页放行
-                .antMatchers("/","/toLoginPage.do","/logout").permitAll()
-                //登陆和注销放行
-                .antMatchers("/vue-element-admin/user/login","/vue-element-admin/user/logout").permitAll()
-                //这里放行是因为我们使用过滤器去做权限拦截
-                .antMatchers("/vue-element-admin/**").permitAll()
+//                .antMatchers("/","/toLoginPage.do","/logout").permitAll()
+//                //登陆和注销放行
+//                .antMatchers("/vue-element-admin/user/login","/vue-element-admin/user/logout").permitAll()
+//                //这里放行是因为我们使用过滤器去做权限拦截
+//                .antMatchers("/vue-element-admin/**").permitAll()
                 //静态资源放行
-                .antMatchers("/static/**").permitAll()
+//                .antMatchers("/static/**").permitAll()
                 //API文档
                 .antMatchers("/swagger-ui/index.html","/swagger-ui/**","/swagger-resources/**","/v3/**").hasRole("swagger-api-doc-access")
                 //健康检查

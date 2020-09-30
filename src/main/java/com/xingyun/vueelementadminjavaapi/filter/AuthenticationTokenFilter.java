@@ -48,6 +48,9 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
+
+        httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
+
         String remoteHost=httpServletRequest.getRemoteHost();
         String remoteIpAddress=httpServletRequest.getRemoteAddr();
         String requestUri=httpServletRequest.getRequestURI();
@@ -62,11 +65,13 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
         if(null!=serverProperties.getServlet().getContextPath()){
             //去掉/dev-api/vue-element-admin/user/login 中的 /dev-api
             requestUri=requestUri.replace(serverProperties.getServlet().getContextPath(),"");
+            log.info("去掉上下文后请求地址:{}",requestUri);
         }
         log.info("检查是否在白名单请求Uri={}",requestUri);
         //精确匹配
         if(this.whiteWebSiteList.contains(requestUri)){
             filterChain.doFilter(httpServletRequest,httpServletResponse);
+            log.info("该请求在白名单");
             return ;
         }
         //模糊匹配
@@ -79,6 +84,7 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
         }
         token=SmartStringUtils.trimToNull(token);
         if(StringUtils.isEmpty(token)){
+            log.info("token={}",token);
             this.vueElementAdminResponse.setCode(50008);
             this.vueElementAdminResponse.setMessage("Token不可为空");
             this.vueElementAdminResponse.setData(null);

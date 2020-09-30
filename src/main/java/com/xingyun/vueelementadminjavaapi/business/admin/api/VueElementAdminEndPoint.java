@@ -79,9 +79,9 @@ public class VueElementAdminEndPoint {
     }
 
     @ApiOperation(value = "获取用户信息接口")
-    @ApiImplicitParam(name = "X-Token", value = "登陆用户Token",required = true, dataType = "String",paramType="header")
     @GetMapping(value = "/user/info")
-    public VueElementAdminResponse getVueElementAdminInfo(@RequestHeader(value = "X-Token")String token) {
+    public VueElementAdminResponse getVueElementAdminInfo(String token) {
+        log.info("come into /user/info");
         log.info("token={},查询用户信息",token);
         Optional<VueElementAdminUserEntity> vueElementAdminUserEntityOptional=this.vueElementAdminUserService.findVueElementAdminUserByToken(token);
         if(vueElementAdminUserEntityOptional.isPresent()){
