@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: vue-element-admin-java-api
+  datasource:
+    username: root
+    password: toor
+    url: jdbc:mysql://localhost:3306/vue_element_admin_test_db?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+    initialization-mode: never
+    # mysql 5.x
+    #driver-class-name: com.mysql.jdbc.Driver
+    # mysql 8 +
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    database: h2
+    open-in-view: true
+    show-sql: true
+
+management:
+  endpoint:
+    health:
+      show-details: when_authorized
+
+com:
+  ning:
+    vue-element-admin:
+      service-cn-name: vue-element-admin后端API
+      service-en-name: ${spring.application.name}
+      super-admin-user-name: admin
+      super-admin-user-password: 46ce34e6dc32408c
+    my-security-account:
+      config:
+        swagger-account: api-doc-account
+        swagger-password: 46ce34e5dc32408c
+        h2-account: h2-db-account
+        h2-password: 4da64d8e13bf47c1
+
+server:
+  port: 8080
+  servlet:
+    context-path: /test-api

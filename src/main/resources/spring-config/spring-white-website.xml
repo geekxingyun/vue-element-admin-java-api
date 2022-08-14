@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean class="com.xingyun.vueelementadminjavaapi.framework.filter.AuthenticationTokenFilter">
+        <!-- 如下列表请求不需要登陆拦截 -->
+        <property name="whiteWebSiteList">
+            <list>
+                <!-- 首页 -->
+                <value>/</value>
+                <!-- 登陆 -->
+                <value>/toLoginPage.do</value>
+                <value>/login</value>
+                <!-- 注销登陆 -->
+                <value>/logout</value>
+                <!-- 后台登陆 -->
+                <value>/vue-element-admin/user/login</value>
+                <!-- 后台注销登陆 -->
+                <value>/vue-element-admin/user/logout</value>
+                <value>/read-api-doc-page.do</value>
+                <value>/swagger-ui/index.html</value>
+                <value>/swagger-resources</value>
+            </list>
+        </property>
+        <property name="whiteWebSiteMap">
+            <map>
+                <entry key="/swagger-ui/" value="true"></entry>
+                <entry key="/static/" value="true"></entry>
+                <entry key="/swagger-resources/" value="true"></entry>
+                <entry key="/v3/" value="true"></entry>
+                <entry key="/actuator/" value="true"></entry>
+                <entry key="/webjars/" value="true"></entry>
+            </map>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: vue-element-admin-java-api
+  datasource:
+    username: sa
+    password: sa
+    # base on file
+    #url: jdbc:h2:~/vue_element_admin_dev_db
+    #base on memory
+    url: jdbc:h2:mem:vue_element_admin_dev_db;DB_CLOSE_DELAY=-1
+    initialization-mode: never
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    database: h2
+    open-in-view: true
+    show-sql: true
+
+management:
+  endpoint:
+    health:
+      show-details: when_authorized
+
+com:
+  ning:
+    vue-element-admin:
+      service-cn-name: vue-element-admin后端API
+      service-en-name: ${spring.application.name}
+      super-admin-user-name: admin
+      super-admin-user-password: 46ce34e6dc32408c
+    my-security-account:
+      config:
+        swagger-account: api-doc-account
+        swagger-password: 46ce34e5dc32408c
+        h2-account: h2-db-account
+        h2-password: 4da64d8e13bf47c1
+
+server:
+  port: 8080
+  servlet:
+    context-path: /dev-api
