@@ -40,7 +40,7 @@ public class SpringFoxSwaggerConfig {
     public ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Swagger Test App Restful API")
-                .description("swagger test app restful api")
+                .description("vue-element-admin java api")
                 .termsOfServiceUrl("https://github.com/geekxingyun")
                 .contact(new Contact("技术宅星云","https://xingyun.blog.csdn.net","fairy_xingyun@hotmail.com"))
                 .version("1.0")
